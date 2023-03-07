@@ -14,7 +14,7 @@ if { $argc != 1 } {
         puts "The script requires one input. PROJ_NAME"
 	} else {
 	set PROJ_NAME [lindex $argv 0]
-	}
+}
 
 
 ################################################################

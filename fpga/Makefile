@@ -35,7 +35,8 @@ BASE_DIR = $(abspath .)
 # NexysVideo: https://reference.digilentinc.com/reference/programmable-logic/nexys-video/start
 # Cmod A7 (-35T): https://store.digilentinc.com/cmod-a7-breadboardable-artix-7-fpga-module/
 # -----------------------------------------------------------------------------
-BOARD = NexysVideo
+BOARD = Nexys4DDR
+#BOARD = NexysVideo
 #BOARD = ArtyA7
 #BOARD = CmodA7
 
@@ -56,6 +57,7 @@ PRODUCTS_OUTPUT_DIR = sdcard
 # project configuration
 # -----------------------------------------------------------------------------
 PROJ_NAME = $(CONFIG)_$(BOARD)
+#PROJ_NAME = AIRI5C_FPGA_Nexys4DDR
 #PROJ_NAME = AIRI5C_FPGA_NexysVideo
 #PROJ_NAME = AIRI5C_FPGA_ArtyA7
 #PROJ_NAME = AIRI5C_FPGA_CmodA7
@@ -87,20 +89,25 @@ else ifeq ($(BOARD), zybo)
 	UBOOT_CONFIG = zybo
 	ZYNQ_CONFIG = Zybo-10 
 else ifeq ($(BOARD), NexysVideo)
-        BOARD_MODEL = digilentinc.com:nexys_video:part0:1.1
-        PART = xc7a200tsbg484-1
-        UBOOT_CONFIG = none
-        ZYNQ_CONFIG = none
+	BOARD_MODEL = digilentinc.com:nexys_video:part0:1.1
+	PART = xc7a200tsbg484-1
+	UBOOT_CONFIG = none
+	ZYNQ_CONFIG = none
 else ifeq ($(BOARD), ArtyA7)
-        BOARD_MODEL = digilentinc.com:arty-a7-35:part0:1.0
-        PART = xc7a35ticsg324-1L
-        UBOOT_CONFIG = none
-        ZYNQ_CONFIG = none
+	BOARD_MODEL = digilentinc.com:arty-a7-35:part0:1.0
+	PART = xc7a35ticsg324-1L
+	UBOOT_CONFIG = none
+	ZYNQ_CONFIG = none
 else ifeq ($(BOARD), CmodA7)
-        BOARD_MODEL = digilentinc.com:cmod_a7-35t:part0:1.1
-        PART = XC7A35T-1CPG236C
-        UBOOT_CONFIG = none
-        ZYNQ_CONFIG = none
+	BOARD_MODEL = digilentinc.com:cmod_a7-35t:part0:1.1
+	PART = XC7A35T-1CPG236C
+	UBOOT_CONFIG = none
+	ZYNQ_CONFIG = none
+else ifeq ($(BOARD), Nexys4DDR)
+	BOARD_MODEL = digilentinc.com:nexys4_ddr:part0:1.1
+	PART = xc7a100tcsg324-1
+	UBOOT_CONFIG = none
+	ZYNQ_CONFIG = none
 else
 	BOARD_MODEL = em.avnet.com:zed:part0:1.2
 	PART = xc7z020clg484-1

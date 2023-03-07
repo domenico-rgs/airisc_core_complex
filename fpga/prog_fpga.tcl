@@ -71,6 +71,18 @@ if {$BOARD == {NexysVideo}} {
   program_hw_devices [get_hw_devices xc7a35t_0]
   refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
   close_project
+} elseif {$BOARD == {Nexys4DDR}} {
+   puts "Programming BOARD: Nexys4DDR"
+   set BITFILE ./sdcard/FPGA_Top_Nexys4DDR.bit
+   open_hw_target {localhost:3121/xilinx_tcf/Digilent/210292743033A}
+   set_property PROGRAM.FILE $BITFILE [get_hw_devices xc7a100t_0]
+   current_hw_device [get_hw_devices xc7a100t_0]
+   refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+   set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+   set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+   program_hw_devices [get_hw_devices xc7a100t_0]
+   refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+   close_project
 } else {
    puts "BOARD not supported"
 }
